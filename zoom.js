@@ -5,7 +5,7 @@
 VNP.Areas.Reader.module.Zoom = new function(){
 
   var self = this;
-  var enabled = false;
+  var enabled = true;
   var $container = $(".iframeZoom");
   var $navigator = $("#sliderZoom");
   var $loading = $(".vc_container_reader .vc_loading");
@@ -62,13 +62,14 @@ VNP.Areas.Reader.module.Zoom = new function(){
   var _in = function(){
     if( !isEnabled() ) enable();
 
-    /* user cannot read */
+    /* user cannot read 
     if ( !VNP.Areas.Customer.getCanRead() && (VNP.Areas.Reader.getActivePage() > VNP.Areas.Reader.getMaxPageToZoom()) ) {
       $loading.hide();
       VNP.Areas.Reader.openZoomWall();
       VNP.Areas.Reader.module.Zoom.disable();
       return;
     }
+    */
 
     // user can read
     // make visible the zoom container
@@ -82,11 +83,8 @@ VNP.Areas.Reader.module.Zoom = new function(){
   };
 
   var _out = function(){
-    disable();
+    enable();
 
-    // make not visible the zoom container
-    $("body").removeClass("zoomin");
-    $container.removeClass("zoomed");
 
     clearVariables();
 
