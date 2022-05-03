@@ -6,7 +6,7 @@ VNP.Areas.Customer = new function () {
   var social_DEVICE = 'web';
   var social_ISSHOP = false;
   var autoLogin = false;
-  var canRead = null;
+  var canRead = true;
   var deviceOs = "";
   var idCustomer = $(".vc_open_login").attr("data-id-customer");
   self.validator;     // used to external html template to hide the error message for forgot password
@@ -116,7 +116,7 @@ VNP.Areas.Customer = new function () {
    *  @return canRead {Boolean} : true / false
    * */
   self.getCanRead = function () {
-    return canRead;
+    return true;
   };
 
 
