@@ -334,7 +334,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
     currentMoveYAmount = 0;
     pictureMoveXAmount = 0;
     pictureMoveYAmount = 0;
-    initialZoomRatio = 1;
+    initialZoomRatio = 4;
     currentZoomRatio = 4;
     isInitialized = false;
     isDragging = false;
@@ -355,7 +355,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
     if (sliderZoomRatio < 1) {
       currentZoomRatio = 4;
     } else {
-      currentZoomRatio = 0.25 * sliderZoomRatio; // every step is 25%
+      currentZoomRatio = 4; // every step is 25%
     }
   };
 
@@ -607,7 +607,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
           if (newRatio !== currentZoomRatio) {
             sliderZoomRatio = newRatio / 0.25;
             if (sliderZoomRatio < 1) {
-              sliderZoomRatio = 1;
+              sliderZoomRatio = 4;
             }
             showImage();
 
@@ -735,7 +735,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
     if (sliderZoomRatio < 1) {
       currentZoomRatio = 4;
     } else {
-      currentZoomRatio = 0.25 * sliderZoomRatio; // every step is 25%
+      currentZoomRatio = 4; // every step is 25%
     }
 
     if (!isDragging && !isDoubleClicking) {
