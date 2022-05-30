@@ -62,13 +62,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
   var _in = function(){
     if( !isEnabled() ) enable();
 
-    /* user cannot read */
-    if ( !VNP.Areas.Customer.getCanRead() && (VNP.Areas.Reader.getActivePage() > VNP.Areas.Reader.getMaxPageToZoom()) ) {
-      $loading.hide();
-      VNP.Areas.Reader.openZoomWall();
-      VNP.Areas.Reader.module.Zoom.disable();
-      return;
-    }
+ 
 
     // user can read
     // make visible the zoom container
@@ -82,22 +76,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
   };
 
   var _out = function(){
-    disable();
 
-    // make not visible the zoom container
-    $("body").removeClass("zoomin");
-    $container.removeClass("zoomed");
-
-    clearVariables();
-
-    //set the navigator to the min
-    $navigator.val( $navigator.attr("min") );
-
-    //clear coordinates
-    $container.find(".swiper-slide").attr("style",null);
-
-    // enable scroll on document
-    document.removeEventListener('touchmove', function (event) { }, { passive: false });
   };
 
   var enable = function(){
@@ -105,7 +84,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
   };
 
   var disable = function(){
-    enabled = false;
+    enabled = true;
   };
 
   var isEnabled = function(){
@@ -113,7 +92,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
   };
 
   var toggle = function (event) {
-    enabled = !enabled;
+    enabled = enabled;
 
     // zoom out
     if ( $container.hasClass("zoomed") ) {
