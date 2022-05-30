@@ -39,9 +39,9 @@ VNP.Areas.Reader.module.Zoom = new function(){
   var currentMoveYAmount = 0;
   var pictureMoveXAmount = 0; // the X move from the center in the original picture (not zoomed)
   var pictureMoveYAmount = 0; // the Y move from the center in the original picture (not zoomed)
-  var initialZoomRatio = 4; // automatically calculated to fit the picture
-  var sliderZoomRatio = 4; // min = 1 (25%), max = 4 (100%)
-  var currentZoomRatio = 4; // automatically calculated runtime
+  var initialZoomRatio = 2; // automatically calculated to fit the picture
+  var sliderZoomRatio = 2; // min = 1 (25%), max = 4 (100%)
+  var currentZoomRatio = 2; // automatically calculated runtime
   var isInitialized = false;
   var isDragging = false;
   var oldCanvasWidth = 0;
@@ -313,8 +313,8 @@ VNP.Areas.Reader.module.Zoom = new function(){
     currentMoveYAmount = 0;
     pictureMoveXAmount = 0;
     pictureMoveYAmount = 0;
-    initialZoomRatio = 4;
-    currentZoomRatio = 4;
+    initialZoomRatio = 2;
+    currentZoomRatio = 2;
     isInitialized = false;
     isDragging = false;
     oldCanvasWidth = 0;
@@ -332,9 +332,9 @@ VNP.Areas.Reader.module.Zoom = new function(){
     sliderZoomRatio = min;
     // set the current zoom ratio
     if (sliderZoomRatio < 1) {
-      currentZoomRatio = 4;
+      currentZoomRatio = 2;
     } else {
-      currentZoomRatio = 4; // every step is 25%
+      currentZoomRatio = 2; // every step is 25%
     }
   };
 
@@ -419,7 +419,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
     pictureMoveXAmount = targetCenterX - (pixelX * targetZoomRatio) + initialMoveAmountX;
     pictureMoveYAmount = targetCenterY - (pixelY * targetZoomRatio) + initialMoveAmountY;
 
-    currentZoomRatio = 4;
+    currentZoomRatio = 2;
     sliderZoomRatio = targetSliderRatio;
     calculateImageOrigin(canvasWidth, canvasHeight);
 
@@ -487,7 +487,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
         oldCanvasHeight = canvasHeight;
 
         calculateInitialZoomRatio(canvasWidth, canvasHeight);
-        currentZoomRatio = 4;
+        currentZoomRatio = 2;
         calculateImageOrigin(canvasWidth, canvasHeight);
 
         currentMoveXAmount = pictureMoveXAmount * currentZoomRatio;
@@ -586,7 +586,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
           if (newRatio !== currentZoomRatio) {
             sliderZoomRatio = newRatio / 0.25;
             if (sliderZoomRatio < 1) {
-              sliderZoomRatio = 4;
+              sliderZoomRatio = 2;
             }
             showImage();
 
@@ -647,7 +647,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
       initialZoomRatio = heightRatio; // calculated by height
     } else {
       console.log('Error: wrong zoom ratio calculation');
-      initialZoomRatio = 1;
+      initialZoomRatio = 2;
     }
   };
 
@@ -712,9 +712,9 @@ VNP.Areas.Reader.module.Zoom = new function(){
 
     // set the current zoom ratio
     if (sliderZoomRatio < 1) {
-      currentZoomRatio = 4;
+      currentZoomRatio = 2;
     } else {
-      currentZoomRatio = 4; // every step is 25%
+      currentZoomRatio = 2; // every step is 25%
     }
 
     if (!isDragging && !isDoubleClicking) {
