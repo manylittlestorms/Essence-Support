@@ -5,7 +5,7 @@
 VNP.Areas.Reader.module.Zoom = new function(){
 
   var self = this;
-  var enabled = true;
+  var enabled = false;
   var $container = $(".iframeZoom");
   var $navigator = $("#sliderZoom");
   var $loading = $(".vc_container_reader .vc_loading");
@@ -41,7 +41,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
   var pictureMoveYAmount = 0; // the Y move from the center in the original picture (not zoomed)
   var initialZoomRatio = 1; // automatically calculated to fit the picture
   var sliderZoomRatio = 1; // min = 1 (25%), max = 4 (100%)
-  var currentZoomRatio = 1; // automatically calculated runtime
+  var currentZoomRatio = 4; // automatically calculated runtime
   var isInitialized = false;
   var isDragging = false;
   var oldCanvasWidth = 0;
@@ -62,14 +62,13 @@ VNP.Areas.Reader.module.Zoom = new function(){
   var _in = function(){
     if( !isEnabled() ) enable();
 
-    /* user cannot read 
+    /* user cannot read */
     if ( !VNP.Areas.Customer.getCanRead() && (VNP.Areas.Reader.getActivePage() > VNP.Areas.Reader.getMaxPageToZoom()) ) {
       $loading.hide();
       VNP.Areas.Reader.openZoomWall();
       VNP.Areas.Reader.module.Zoom.disable();
       return;
     }
-    */
 
     // user can read
     // make visible the zoom container
@@ -83,8 +82,11 @@ VNP.Areas.Reader.module.Zoom = new function(){
   };
 
   var _out = function(){
-    enable();
+    disable();
 
+    // make not visible the zoom container
+    $("body").removeClass("zoomin");
+    $container.removeClass("zoomed");
 
     clearVariables();
 
@@ -333,7 +335,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
     pictureMoveXAmount = 0;
     pictureMoveYAmount = 0;
     initialZoomRatio = 1;
-    currentZoomRatio = 1;
+    currentZoomRatio = 4;
     isInitialized = false;
     isDragging = false;
     oldCanvasWidth = 0;
@@ -351,7 +353,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
     sliderZoomRatio = min;
     // set the current zoom ratio
     if (sliderZoomRatio < 1) {
-      currentZoomRatio = initialZoomRatio;
+      currentZoomRatio = 4;
     } else {
       currentZoomRatio = 0.25 * sliderZoomRatio; // every step is 25%
     }
@@ -438,7 +440,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
     pictureMoveXAmount = targetCenterX - (pixelX * targetZoomRatio) + initialMoveAmountX;
     pictureMoveYAmount = targetCenterY - (pixelY * targetZoomRatio) + initialMoveAmountY;
 
-    currentZoomRatio = targetZoomRatio;
+    currentZoomRatio = 4;
     sliderZoomRatio = targetSliderRatio;
     calculateImageOrigin(canvasWidth, canvasHeight);
 
@@ -506,7 +508,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
         oldCanvasHeight = canvasHeight;
 
         calculateInitialZoomRatio(canvasWidth, canvasHeight);
-        currentZoomRatio = initialZoomRatio + (sliderZoomRatio - 1);
+        currentZoomRatio = 4;
         calculateImageOrigin(canvasWidth, canvasHeight);
 
         currentMoveXAmount = pictureMoveXAmount * currentZoomRatio;
@@ -731,7 +733,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
 
     // set the current zoom ratio
     if (sliderZoomRatio < 1) {
-      currentZoomRatio = initialZoomRatio;
+      currentZoomRatio = 4;
     } else {
       currentZoomRatio = 0.25 * sliderZoomRatio; // every step is 25%
     }
