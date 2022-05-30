@@ -39,8 +39,8 @@ VNP.Areas.Reader.module.Zoom = new function(){
   var currentMoveYAmount = 0;
   var pictureMoveXAmount = 0; // the X move from the center in the original picture (not zoomed)
   var pictureMoveYAmount = 0; // the Y move from the center in the original picture (not zoomed)
-  var initialZoomRatio = 1; // automatically calculated to fit the picture
-  var sliderZoomRatio = 1; // min = 1 (25%), max = 4 (100%)
+  var initialZoomRatio = 4; // automatically calculated to fit the picture
+  var sliderZoomRatio = 4; // min = 1 (25%), max = 4 (100%)
   var currentZoomRatio = 4; // automatically calculated runtime
   var isInitialized = false;
   var isDragging = false;
