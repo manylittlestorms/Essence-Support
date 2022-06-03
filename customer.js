@@ -116,7 +116,7 @@ VNP.Areas.Customer = new function () {
    *  @return canRead {Boolean} : true / false
    * */
   self.getCanRead = function () {
-    return true;
+    return canRead;
   };
 
 
