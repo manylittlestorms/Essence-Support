@@ -388,6 +388,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
         oldPicImage2Number = VNP.Areas.Reader.swiperUi.getCurrentPages()[1];
         if (oldPicImage2Number > 0) {
           picImage2.src = VNP.baseUrl + VNP.Areas.Reader.getBooksPath() + 'images/zoompages/Zoom-' + oldPicImage2Number + '.jpg';
+          console.log(picImage2.src); 
         }
       } else {
         // first execution (only after having read the correct pictures size)
@@ -398,6 +399,7 @@ VNP.Areas.Reader.module.Zoom = new function(){
       oldPicImage1Number = VNP.Areas.Reader.swiperUi.getCurrentPages()[0];
       if (oldPicImage1Number > 0) {
         picImage1.src = VNP.baseUrl + VNP.Areas.Reader.getBooksPath() + 'images/zoompages/Zoom-' + oldPicImage1Number + '.jpg';
+        console.log(picImage1.src); 
       }
     }
   };
